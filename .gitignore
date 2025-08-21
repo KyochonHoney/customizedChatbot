@@ -2,3 +2,5 @@ part3.xlsx
 .env
 chroma_huggingface/
 venv/
+dataset/
+

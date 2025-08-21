@@ -4,8 +4,8 @@ from llm_utils import get_ai_response
 
 st.set_page_config(page_title="RAG PART3", page_icon="🤖")
 
-st.title("🤖RAG PART3")
-st.caption("3파트 AI 챗봇 구현")
+st.title("🤖맞춤배움길 AI 어시스턴트")
+st.caption("맞춤배움길 챗봇 구현(ollama gpt-oss:20b)")
 
 if 'message_list' not in st.session_state:
     st.session_state.message_list = []

@@ -11,7 +11,7 @@ print("--- 현재 존재하는 컬렉션 목록 (끝) ---")
 # 3. 'part3' 컬렉션 가져오기 (없으면 생성)
 # 이미 컬렉션이 있으니 create_collection 대신 get_or_create_collection 사용!
 print("\n--- 'part3' 컬렉션 가져오기 또는 생성 시도 ---")
-collection = chroma_client.get_or_create_collection(name="part3")
+collection = chroma_client.get_or_create_collection(name="cures")
 print(f"Collection '{collection.name}'에 연결되었습니다.")
 
 # 4. 'part3' 컬렉션에 데이터 추가 (예시)

@@ -8,7 +8,7 @@ text_splitter = RecursiveCharacterTextSplitter(
     chunk_overlap=100
 )
 
-loader = UnstructuredExcelLoader('./part3.xlsx')
+loader = UnstructuredExcelLoader('./dataset/cures9.xlsx')
 
 # 문서 불러오기 + 청크 분할
 document_list = loader.load_and_split(text_splitter)
@@ -19,7 +19,7 @@ embedding = HuggingFaceEmbeddings(
 )
 
 # Chroma DB에 저장
-collection_name = 'part3'
+collection_name = 'cures'
 database = Chroma.from_documents(
     documents=document_list,
     embedding=embedding,

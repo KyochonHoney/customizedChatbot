@@ -43,7 +43,7 @@ def get_llm():
 llm = OllamaLLM(
     model="gpt-oss:20b",
     base_url="http://localhost:11434",
-    temperature=0.7,
+    temperature=0.8,
 )
 
 # ===== (C) Retriever (Chroma 로드) =====
@@ -55,7 +55,7 @@ embedding = HuggingFaceEmbeddings(
 )
 
 vectordb = Chroma(
-    collection_name="part3",
+    collection_name="cures",
     persist_directory="./chroma_huggingface",
     embedding_function=embedding,
 )
@@ -63,10 +63,11 @@ retriever = vectordb.as_retriever(search_kwargs={"k": 3})  # 필요시 k 조절
 
 # ===== (D) 프롬프트 & 체인 =====
 SYSTEM_PROMPT = (
-    "당신은 체계적이고 신속한 AI입니다. 답변만 출력하세요. "
-    "모르는 경우 '제가 모르는 답변입니다. 다른 답변을 물어봐주세요 :)'라고 답하세요. "
-    "간단한 인사말 및 DB에 있는 질문에 대한 대답만 해주세요.\n\n"
-    "다음은 참고 문서입니다:\n{context}"
+    "당신은 맞춤배움길 전용 AI 챗봇입니다. "
+    "반드시 DB({context})에 있는 내용으로만 간단히 답변하세요. "
+    "DB에 해당 내용이 없으면 '죄송합니다. 제가 모르는 질문입니다 :)'라고만 답하세요. "
+    "불필요한 설명 없이 짧고 명확하게 답변하세요."
+    "답변은 500자 내로만 해주세요"
 )
 
 qa_prompt = ChatPromptTemplate.from_messages([
