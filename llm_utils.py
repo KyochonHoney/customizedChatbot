@@ -55,12 +55,12 @@ embedding = HuggingFaceEmbeddings(
 )
 
 vectordb = Chroma(
-    collection_name="cures",
+    collection_name="cures1",
     persist_directory="./chroma_huggingface",
     embedding_function=embedding,
 )
-retriever = vectordb.as_retriever(search_kwargs={"k": 3})  # 필요시 k 조절
-
+retriever = vectordb.as_retriever(search_kwargs={"k": 5})  # 필요시 k 조절
+print(retriever)
 # ===== (D) 프롬프트 & 체인 =====
 SYSTEM_PROMPT = (
     "당신은 맞춤배움길 전용 AI 챗봇입니다. "
